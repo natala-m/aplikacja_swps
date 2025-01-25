@@ -1,0 +1,46 @@
+{% extends "MojeFinanse/base.html" %}
+
+{% block content %}
+<h2>Lista Wydatków</h2>
+<div class="mb-3">
+    <a href="{% url 'expenses_insert' %}" class="btn btn-outline-success">
+        <i class="fas fa-plus"></i> Dodaj
+    </a>
+</div>
+<table class="table table-borderless">
+    <thead class="border-bottom fontweight-bold">
+        <tr>
+            <th>Data</th>
+            <th>Cena (zł)</th>
+            <th>Kategoria</th>
+            <th>Akcje</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% if expenses_list %}
+            {% for expenses in expenses_list %}
+                <tr>
+                    <td>{{ expenses.date }}</td>
+                    <td>{{ expenses.price }}</td>
+                    <td>{{ expenses.category }}</td>
+                    <td>
+                        <a href="{% url 'expenses_update' expenses.id %}" class="btn text-secondary px-0">
+                            <i class="far fa-edit fa-lg"></i>
+                        </a>
+                        <form action="{% url 'expenses_delete' expenses.id %}" method="post" style="display:inline;">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-outline-danger">
+                                <i class="far fa-trash-alt fa-lg"></i>
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+        {% else %}
+            <tr>
+                <td colspan="4" style="text-align: center;">Brak wydatków do wyświetlenia</td>
+            </tr>
+        {% endif %}
+    </tbody>
+</table>
+{% endblock content %}
