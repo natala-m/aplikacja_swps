@@ -19,7 +19,7 @@ def expenses_form(request, id=0):
             form = ExpensesForm(request.POST)
         else:
             expenses = Expenses.objects.get(pk=id)
-            form = ExpensesForm(request.POST, isinstance=expenses)
+            form = ExpensesForm(request.POST, instance=expenses)
         if form.is_valid():
             form.save()
         return redirect('/expenses/list')

@@ -8,11 +8,11 @@ class Category(models.Model):
     
 class Expenses(models.Model):
     description = models.CharField(max_length=255)
-    price = models.FloatField()
+    price = models.DecimalField(max_digits=10, decimal_places=2)
     date = models.DateTimeField(null=True, blank=True)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
 
     def __str__(self):
-        return f"{self.date} - {self.price} zł"
+        return f"{self.category},{self.description} - {self.price} zł"
 
  
