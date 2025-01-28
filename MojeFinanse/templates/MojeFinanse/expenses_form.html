@@ -3,7 +3,11 @@
 {% block content %}
 <form action="" method ="post" autocomplete="off">
     {% csrf_token %}
-    
+   <div class="mb-4">
+        <a href="{% url 'home' %}" class="btn btn-link text-decoration-none">
+            <i class="fas fa-arrow-left"></i> Powrót
+        </a>
+    </div>  
  <div class="row">
     <div class="col-md-4">
         {{form.date|as_crispy_field}}
@@ -14,14 +18,17 @@
     <div class="col-md-4">
         {{form.category|as_crispy_field}}
     </div>
+    <div class="col-md-4">
+        {{form.payment_method|as_crispy_field}}
+    </div>
   </div>
     {{form.description|as_crispy_field}}
   <div class="row">
         <div class="col-md-8">
-            <button type="submit" class="btn btn-primary btn-block btn-lg" ><i class="fa-solid fa-database"></i>  Dodaj</button>
+            <button type="submit" class="btn btn-primary w-100 btn-lg" ><i class="fa-solid fa-database"></i>  Dodaj</button>
         </div>
         <div class="col-md-4">
-            <a href="{% url 'expenses_list' %}" class="btn btn-secondary btn-block btn-lg"> 
+            <a href="{% url 'expenses_list' %}" class="btn btn-secondary w-100 btn-lg"> 
                 <i class="fas fa-stream"></i> Powrót do listy
             </a>
 
@@ -30,7 +37,15 @@
     
 
 </form>
-
+    <script>
+        $(document).ready(function() {
+        $('.datepicker').datepicker({
+            format: 'dd.mm.yyyy', 
+            autoclose: true,  
+            todayHighlight: true, 
+        });
+    });
+    </script>
 {% endblock content %} 
 
 

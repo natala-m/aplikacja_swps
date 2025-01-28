@@ -1,6 +1,11 @@
 {% extends "MojeFinanse/base.html" %}
 
 {% block content %}
+<div class="mb-4">
+    <a href="{% url 'home' %}" class="btn btn-link text-decoration-none">
+        <i class="fas fa-arrow-left"></i> Powrót
+    </a>
+</div>  
 <h2>Lista Wydatków</h2>
 <div class="mb-3">
     <a href="{% url 'expenses_insert' %}" class="btn btn-outline-success">
@@ -13,7 +18,8 @@
             <th>Data</th>
             <th>Cena (zł)</th>
             <th>Kategoria</th>
-            <th>Akcje</th>
+            <th>Płatnośc</th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -23,6 +29,7 @@
                     <td>{{ expenses.date }}</td>
                     <td>{{ expenses.price }}</td>
                     <td>{{ expenses.category }}</td>
+                    <td>{{ expenses.payment_method }}</td>
                     <td>
                         <a href="{% url 'expenses_update' expenses.id %}" class="btn text-secondary px-0">
                             <i class="far fa-edit fa-lg"></i>

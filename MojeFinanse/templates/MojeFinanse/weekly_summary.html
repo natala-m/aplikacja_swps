@@ -1,0 +1,31 @@
+{% extends "MojeFinanse/base.html" %}
+
+{% block content %}
+        <a href="{% url 'home' %}" class="btn btn-link text-decoration-none">
+            <i class="fas fa-arrow-left"></i> Powrót
+        </a>
+        <h1 class="text-center mt-5 mb-4">Podsumowanie wydatków na bieżący tydzień</h1>
+        <br>
+        <p class="lead text-center mb-4 highlighted-summary">{{ weekly_summary_text }}</p>
+
+        <h5 >Wydatki w tym tygodniu:</h5>
+        <ul>
+            {% for expense in weekly_expenses %}
+            <li>{{ expense.date }} - {{ expense.category }}: {{ expense.price }} PLN</li>
+            {% empty %}
+            <li>Brak wydatków w tym tygodniu.</li>
+            {% endfor %}
+        </ul>
+<style>
+    .highlighted-summary {
+        font-size: 1.5rem; 
+        font-weight: bold; 
+        color: #007bff; 
+        border: 2px solid #007bff;
+        padding: 10px; 
+        border-radius: 5px; 
+        background-color: #f8f9fa; 
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+     } 
+    </style>
+{% endblock %}

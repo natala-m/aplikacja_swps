@@ -14,6 +14,7 @@ SECRET_KEY = 'django-insecure-+0uy=f#g9c-69tyo#oa-4+h7$#*^qq!i4!--(izl2l@*1i66q7
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+INTERNAL_IPS= ['127.0.0.1']
 
 # Application definition
 
@@ -27,6 +28,7 @@ INSTALLED_APPS = [
     'MojeFinanse',
     'crispy_forms',
     'crispy_bootstrap5',
+    'debug_toolbar'
 ]
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
@@ -41,6 +43,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
 ROOT_URLCONF = 'aplikacja_swps.urls'

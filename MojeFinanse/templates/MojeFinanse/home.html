@@ -1,4 +1,53 @@
 {% extends "MojeFinanse/base.html" %}
 
 {% block content %}
-{% endblock content %}
+<div class="container mt-5">
+        <!-- Pierwsza sekcja z przyciskami na górze: Dodaj wydatki i Lista wydatków -->
+        <div class="row justify-content-center">
+            <!-- Dodaj wydatki -->
+            <div class="col-md-4 mb-4">
+                <a href="{% url 'expenses_insert' %}" class="btn btn-primary btn-lg w-100 p-4">
+                    <i class="fas fa-plus-circle fa-2x"></i><br>
+                    Dodaj wydatki
+                </a>
+            </div>
+            
+            <!-- Lista wydatków -->
+            <div class="col-md-4 mb-4">
+                <a href="{% url 'expenses_list' %}" class="btn btn-success btn-lg w-100 p-4">
+                    <i class="fas fa-list-alt fa-2x"></i><br>
+                    Lista wydatków
+                </a>
+            </div>
+        </div>
+
+        <!-- Druga sekcja z przyciskami na dole: Podsumowanie tygodniowe, miesięczne, roczne -->
+        <div class="row justify-content-center mt-4">
+            <!-- Podsumowanie tygodniowe -->
+            <div class="col-md-3 mb-4">
+                <a href="{% url 'weekly_summary' %}" class="btn btn-warning btn-lg w-100 p-4">
+                    <i class="fas fa-calendar-week fa-2x"></i><br>
+                    Podsumowanie tygodniowe
+                </a>
+            </div>
+
+            <!-- Podsumowanie miesięczne -->
+            <div class="col-md-3 mb-4">
+                <a href="{% url 'monthly_summary' %}" class="btn btn-info btn-lg w-100 p-4">
+                    <i class="fas fa-calendar-alt fa-2x"></i><br>
+                    Podsumowanie miesięczne
+                </a>
+            </div>
+
+            <!-- Podsumowanie roczne -->
+            <div class="col-md-3 mb-4">
+                <a href="" class="btn btn-danger btn-lg w-100 p-4">
+                    <i class="fa-regular fa-calendar-check fa-2x"></i><br>
+                    Podsumowanie roczne
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
