@@ -1,5 +1,5 @@
 from django import forms
-from .models import Expenses
+from .models import Expenses, Budget
 
 class ExpensesForm(forms.ModelForm):
     date = forms.DateTimeField(
@@ -27,5 +27,12 @@ class ExpensesForm(forms.ModelForm):
         super(ExpensesForm, self).__init__(*args, **kwargs)
         self.fields['description'].required = False
     
-   
 
+class BudgetForm(forms.ModelForm):
+    class Meta:
+        model = Budget
+        fields = ['month', 'amount']
+        widgets = {
+            'month': forms.DateInput(attrs={'type': 'month', 'class': 'form-control'}),
+            'amount': forms.NumberInput(attrs={'class': 'form-control'}),
+        }

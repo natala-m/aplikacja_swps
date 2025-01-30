@@ -1,4 +1,6 @@
 from django.db import models
+from django.utils.timezone import now
+
 
 class Category(models.Model):
     name = models.CharField(max_length=100)
@@ -25,4 +27,9 @@ class Expenses(models.Model):
         return f"{self.category},{self.description} - {self.price} zł"
 
 
+class Budget(models.Model):
+    month = models.DateField(default=now) 
+    amount = models.DecimalField(max_digits=10, decimal_places=2)  
 
+    def __str__(self):
+        return f"Budżet na {self.month.strftime('%B %Y')}: {self.amount} PLN"

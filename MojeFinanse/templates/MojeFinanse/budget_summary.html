@@ -1,0 +1,12 @@
+{% extends "MojeFinanse/base.html" %}
+{% load static %}
+{% block content %}
+    <a href="{% url 'home' %}" class="btn btn-link text-decoration-none">
+        <i class="fas fa-arrow-left"></i> Powrót
+    </a>
+    <h2>Podsumowanie budżetu</h2>
+    <p>Budżet na ten miesiąc: <strong>{{ budget }} PLN</strong></p>
+    <p >Wydatki w tym miesiącu:<strong>{{ total_expenses }} PLN</strong></p>
+    <p class="lead text-center mb-4 highlighted-summary">Pozostały budżet:<strong> {{ budget_left }} PLN</strong></p>
+{% endblock %}
+

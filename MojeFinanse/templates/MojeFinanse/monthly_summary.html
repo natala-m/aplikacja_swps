@@ -1,11 +1,12 @@
 {% extends "MojeFinanse/base.html" %}
+{% load static %}
 {% block content %}
         <a href="{% url 'home' %}" class="btn btn-link text-decoration-none">
             <i class="fas fa-arrow-left"></i> Powrót
         </a>
 
         <h3 class="text-center mt-5 mb-4">Wydatki Miesięczne</h3>
-        <p class="lead text-center mb-4 highlighted-summary">
+        <p class=" lead text-center mb-4 highlighted-summary">
             {{ summary_month_text }}
         </p>
         <table class="table table-striped table-bordered">
@@ -24,19 +25,6 @@
                 {% endfor %}
             </tbody>
         </table>
-       <style>
-        .highlighted-summary {
-            font-size: 1.5rem; 
-            font-weight: bold; 
-            color: #007bff; 
-            border: 2px solid #007bff;
-            padding: 10px; 
-            border-radius: 5px; 
-            background-color: #f8f9fa; 
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-         } 
-        </style>
-        
 {% endblock %}
 
 
