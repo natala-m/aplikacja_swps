@@ -12,7 +12,7 @@ def home(request):
 
 def expenses_list(request):
     context = {"expenses_list":Expenses.objects.all()}
-    return render(request, "MojeFinanse/expenses_list.html", context)
+    return render(request, "MojeFinanse/expenses/expenses_list.html", context)
 
 def expenses_form(request, id=0):
    if request.method == 'GET':
@@ -21,7 +21,7 @@ def expenses_form(request, id=0):
         else:
             expenses = Expenses.objects.get(pk=id)
             form = ExpensesForm(instance=expenses)
-        return render(request, "MojeFinanse/expenses_form.html", {'form':form})
+        return render(request, "MojeFinanse/expenses/expenses_form.html", {'form':form})
    else:
         if id == 0 :
             form = ExpensesForm(request.POST)
@@ -52,7 +52,7 @@ def monthly_summary(request):
         'month_expenses': expenses_by_month,
     }
 
-    return render(request, "MojeFinanse/monthly_summary.html", context)
+    return render(request, "MojeFinanse/summary/monthly_summary.html", context)
 
 #Podsumowanie tygodniowe 
 def weekly_summary(request):
@@ -67,7 +67,7 @@ def weekly_summary(request):
         'weekly_expenses': weekly_expenses,
         'total_weekly_expenses': total_weekly_expenses,
     }
-    return render(request, "MojeFinanse/weekly_summary.html", context)
+    return render(request, "MojeFinanse/summary/weekly_summary.html", context)
 
 #Budżet
 def budget_form(request):
@@ -79,7 +79,7 @@ def budget_form(request):
     else:
         form = BudgetForm()
 
-    return render(request, 'MojeFinanse/budget_form.html', {'form': form})
+    return render(request, 'MojeFinanse/budget/budget_form.html', {'form': form})
 
 def budget_summary(request):
     current_month = datetime.today().replace(day=1)
@@ -93,4 +93,4 @@ def budget_summary(request):
         "total_expenses": total_expenses,
         "budget_left": budget_left if budget else "Brak danych",
     }
-    return render(request, "MojeFinanse/budget_summary.html", context)
+    return render(request, "MojeFinanse/summary/budget_summary.html", context)
